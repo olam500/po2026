@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.HashSet;
 
 public class Lotto {
     public static void main(String[] args) {
@@ -38,5 +39,27 @@ public class Lotto {
         ArrayList<Integer> wspolne = new ArrayList<>(typyUzytkownika);
         wspolne.retainAll(wylosowane);
         System.out.println("Liczba trafień: " + wspolne.size());
+
+        long liczbaLosowan = 0;
+        long startTime = System.currentTimeMillis();
+        java.util.Set<Integer> typySet = new java.util.HashSet<>(typyUzytkownika);
+        java.util.Set<Integer> aktualneLosowanie = new java.util.HashSet<>();
+        while (true) {
+            liczbaLosowan++;
+            aktualneLosowanie.clear();
+
+            while (aktualneLosowanie.size() < 6) {
+                aktualneLosowanie.add(random.nextInt(49) + 1);
+            }
+
+            if (aktualneLosowanie.equals(typySet)) {
+                break;
+            }
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Liczba losowań potrzebnych do pełnego trafienia: " + liczbaLosowan);
+        System.out.println("Łączny czas działania programu: " + (endTime - startTime) + " ms");
     }
 }
