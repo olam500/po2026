@@ -1,3 +1,6 @@
+package agh.po.lab3.src;
+import java.util.HashMap;
+import java.util.Map;
 public class CodingBat {
 
     public static void main(String[] args) {
@@ -53,5 +56,26 @@ public class CodingBat {
 
         return "";
     }
+    public Map<String, String> mapAB2(Map<String, String> map) {
+        Map<String, String> wynik = new HashMap<>(map);
 
+        if (wynik.containsKey("a") && wynik.containsKey("b")) {
+            if (wynik.get("a").equals(wynik.get("b"))) {
+                wynik.remove("a");
+                wynik.remove("b");
+            }
+        }
+
+        return wynik;
+    }
+
+    public Map<String, Integer> wordLen(String[] strings) {
+        Map<String, Integer> map = new HashMap<>();
+
+        for (String s : strings) {
+            map.put(s, s.length());
+        }
+
+        return map;
+    }
 }
